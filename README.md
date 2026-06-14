@@ -2,6 +2,10 @@
 
 主要存放因方便个人开发或学习流程而编写的 Agents 的 Skills 和 Scripts 脚本。
 
+# 仓库简介
+
+本仓库用于集中管理我在个人开发、自动化处理和学习实践过程中编写的 Skills 与 Scripts。内容主要围绕 GitHub 仓库初始化、Notion 内容处理等场景，目标是提升重复性工作的效率，并沉淀可复用的自动化流程。
+
 # 项目概览
 
 本仓库目前包含两个主要 Skill：
@@ -24,6 +28,12 @@
 
 - 配置环境变量 `GITHUB_PERSONAL_ACCESS_TOKEN`
 - 使用具备仓库创建权限的 GitHub Fine-grained PAT
+
+### 使用示例
+
+```powershell
+python scripts/setup_repo.py setup --repo-name "My-New-Project" --description "A sample project" --local-path "E:\ProgrameSpace\MyProject" --output "result.json"
+```
 
 ### 适用场景
 
@@ -50,21 +60,7 @@
 - 配置环境变量 `NOTION_TOKEN`
 - 确保目标 Notion 页面已分享给对应 Integration
 
-### 适用场景
-
-- 批量整理 Notion 数学公式
-- 将文本公式迁移为 Notion 原生公式块
-- 检查页面内容是否存在乱码或未处理公式
-
-# 快速开始
-
-### GitHub 仓库初始化
-
-```powershell
-python scripts/setup_repo.py setup --repo-name "My-New-Project" --description "A sample project" --local-path "E:\ProgrameSpace\MyProject" --output "result.json"
-```
-
-### Notion 公式转换
+### 使用示例
 
 按标题转换：
 
@@ -78,8 +74,6 @@ python latex_converter.py convert <page_id> <heading_name>
 python latex_converter.py convert <page_id> ALL
 ```
 
-### Notion 内容校验
-
 按标题校验：
 
 ```bash
@@ -91,6 +85,30 @@ python latex_converter.py verify <page_id> <heading_name>
 ```bash
 python latex_converter.py verify <page_id> ALL
 ```
+
+### 适用场景
+
+- 批量整理 Notion 数学公式
+- 将文本公式迁移为 Notion 原生公式块
+- 检查页面内容是否存在乱码或未处理公式
+
+# 目录说明
+
+```text
+Personal-Skills-Scripts/
+├── github-repo-setup/
+│   ├── SKILL.md
+│   └── scripts/
+│       └── setup_repo.py
+├── notion-latex-converter/
+│   ├── SKILL.md
+│   └── latex_converter.py
+└── README.md
+```
+
+# 快速开始
+
+如果你想先体验仓库中的能力，建议优先查看各目录下的 `SKILL.md` 文件，它们分别说明了对应 Skill 的用途、依赖、参数和使用方式。
 
 # 功能特性
 
@@ -115,20 +133,6 @@ python latex_converter.py verify <page_id> ALL
 ## 3. 权限不足
 
 GitHub Token 需要具备仓库创建相关权限；Notion Token 需要有访问目标页面的权限。
-
-# 目录结构
-
-```text
-Personal-Skills-Scripts/
-├── github-repo-setup/
-│   ├── SKILL.md
-│   └── scripts/
-│       └── setup_repo.py
-├── notion-latex-converter/
-│   ├── SKILL.md
-│   └── latex_converter.py
-└── README.md
-```
 
 # 说明
 
