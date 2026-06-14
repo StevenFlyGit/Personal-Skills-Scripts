@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import json
+import os
 import re
 import sys
 import time
@@ -9,10 +10,8 @@ import requests
 # ==============================================================================
 # Notion API Configuration
 # ==============================================================================
-# Configure your Notion Integration Token here.
-# Get one from: https://www.notion.so/my-integrations
-# Make sure to share the target database/page with your integration in Notion.
-NOTION_TOKEN = "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"
+# Retrieve the Notion Integration Token from system environment variables.
+NOTION_TOKEN = os.environ.get("NOTION_TOKEN")
 
 def get_headers(token):
     return {
@@ -377,8 +376,10 @@ def find_heading_block(blocks, heading_name, headers):
 # Main Execution Entry
 # ==============================================================================
 def main():
-    if NOTION_TOKEN == "YOUR_NOTION_INTEGRATION_TOKEN" or not NOTION_TOKEN:
-        print("Error: Please replace NOTION_TOKEN with your actual Notion Integration Token inside the script.", file=sys.stderr)
+    if not NOTION_TOKEN:
+        print("Error: NOTION_TOKEN environment variable is not set. Please set it before running the script.", file=sys.stderr)
+        print("Example (Windows PowerShell): $env:NOTION_TOKEN=\"your_token_here\"", file=sys.stderr)
+        print("Example (Windows Command Prompt): set NOTION_TOKEN=your_token_here", file=sys.stderr)
         sys.exit(1)
         
     action = "convert"

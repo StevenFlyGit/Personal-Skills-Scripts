@@ -14,6 +14,24 @@ It also includes a built-in auditor tool to double-check and verify that the pag
 ## Dependencies
 - `requests` python library
 
+## Environment Variables
+Before running the script, you must set the `NOTION_TOKEN` environment variable.
+
+**Windows PowerShell:**
+```powershell
+$env:NOTION_TOKEN="your_notion_token_here"
+```
+
+**Windows Command Prompt:**
+```cmd
+set NOTION_TOKEN=your_notion_token_here
+```
+
+**Linux/macOS:**
+```bash
+export NOTION_TOKEN="your_notion_token_here"
+```
+
 ## Quick Start
 
 ### 1. Formula Conversion
@@ -50,4 +68,4 @@ The script implements exponential backoff with random jitter to respect Notion A
 
 ## Common Mistakes
 1. **Unshared Page**: The target page is not shared with the Notion Integration. In Notion, go to the page, click the "..." menu, and add your integration under "Connections".
-2. **Missing Token**: Forgetting to configure the `NOTION_TOKEN` inside the script.
+2. **Missing Env Var**: Forgetting to set the `NOTION_TOKEN` environment variable before executing the script.
